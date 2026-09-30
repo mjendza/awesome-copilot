@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-resource-group-map",
+  "description": "Visual map of every Azure resource group and the resources inside it, colour coded by resource family with region, SKU, tag-coverage and governance findings.",
+  "version": "1.0.0",
+  "author": {
+    "name": "mjendza",
+    "url": "https://github.com/mjendza"
+  },
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "azure",
+    "canvas",
+    "cloud-governance",
+    "resource-graph",
+    "resource-groups",
+    "tagging"
+  ],
+  "extensions": {
+    "com.github.copilot": {
+      "logo": "assets/preview.png"
+    },
+    "com.github.awesome-copilot": {
+      "extensions": [
+        "./extensions/azure-resource-group-map"
+      ]
+    }
+  }
+}

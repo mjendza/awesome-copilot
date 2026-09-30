@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-front-door-topology",
+  "description": "Map an Azure Front Door end to end in a canvas: custom domains and endpoints through routes to origin groups and origins, with WAF, TLS, caching and health-probe detail.",
+  "version": "1.0.0",
+  "author": {
+    "name": "mjendza",
+    "url": "https://github.com/mjendza"
+  },
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "azure",
+    "azure-front-door",
+    "canvas",
+    "cdn",
+    "networking",
+    "topology-visualization"
+  ],
+  "extensions": {
+    "com.github.copilot": {
+      "logo": "assets/preview.png"
+    },
+    "com.github.awesome-copilot": {
+      "extensions": [
+        "./extensions/azure-front-door-topology"
+      ]
+    }
+  }
+}

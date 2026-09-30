@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Azure Resource Group Map</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="toolbar-row">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">Resource Group Map</span>
+        </div>
+        <label class="field">
+          <span class="field-label">Subscription</span>
+          <select id="subscription-select" aria-label="Subscription"></select>
+        </label>
+        <label class="field">
+          <span class="field-label">Group by</span>
+          <select id="group-by" aria-label="Group by">
+            <option value="resourceGroup">Resource group</option>
+            <option value="category">Resource family</option>
+            <option value="location">Region</option>
+            <option value="type">Resource type</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field-label">Sort</span>
+          <select id="sort-by" aria-label="Sort by">
+            <option value="count">Most resources</option>
+            <option value="name">Name</option>
+            <option value="untagged">Most untagged</option>
+          </select>
+        </label>
+        <label class="field field-grow">
+          <span class="field-label">Filter</span>
+          <input id="search" type="search" placeholder="Resource, type, tag, region…" aria-label="Filter resources" />
+        </label>
+        <button id="refresh" class="btn btn-primary" type="button">Rescan Azure</button>
+      </div>
+      <div class="toolbar-row toolbar-row-sub">
+        <div class="legend" id="legend" role="group" aria-label="Filter by resource family"></div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="stage">
+        <div class="summary" id="summary"></div>
+        <div class="grid" id="grid"></div>
+        <div class="overlay" id="overlay" hidden>
+          <div class="overlay-card">
+            <h2 id="overlay-title">Scanning Azure…</h2>
+            <p id="overlay-body"></p>
+            <pre id="overlay-detail" hidden></pre>
+            <button class="btn btn-primary" id="overlay-action" type="button" hidden>Retry</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="inspector" id="inspector" aria-label="Selection details">
+        <div class="inspector-empty" id="inspector-empty">
+          <h2>Nothing selected</h2>
+          <p>Pick a resource group to see its full composition, or a single resource to inspect its type, region, SKU and tags.</p>
+        </div>
+        <div class="inspector-body" id="inspector-body" hidden>
+          <span class="chip" id="inspector-kind"></span>
+          <h2 id="inspector-title"></h2>
+          <p class="inspector-sub" id="inspector-sub"></p>
+          <dl class="details" id="inspector-details"></dl>
+          <div class="breakdown" id="inspector-breakdown"></div>
+          <div class="inspector-actions">
+            <button class="btn btn-primary" id="ask" type="button">Ask Copilot about this</button>
+            <a class="btn btn-ghost" id="portal" target="_blank" rel="noreferrer" hidden>Open in Azure portal</a>
+          </div>
+        </div>
+        <div class="warnings" id="warnings" hidden>
+          <h3>Findings</h3>
+          <ul id="warnings-list"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

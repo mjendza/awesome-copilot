@@ -260,6 +260,12 @@
       }
     },
     {
+      "name": "azure-front-door-topology",
+      "source": "plugins/azure-front-door-topology",
+      "description": "Map an Azure Front Door end to end in a canvas: custom domains and endpoints through routes to origin groups and origins, with WAF, TLS, caching and health-probe detail.",
+      "version": "1.0.0"
+    },
+    {
       "name": "azure-functions-hosted-skills",
       "description": "Build, run, and debug Azure Functions Hosted Skills locally or invoke supported functions in an existing Function App from a Copilot canvas.",
       "version": "0.5.5",
@@ -285,6 +291,12 @@
         "path": "canvases/azure-functions-hosted-skills",
         "sha": "bf0bd07520d004845b727bb40932c24a6e69bb8d"
       }
+    },
+    {
+      "name": "azure-resource-group-map",
+      "source": "plugins/azure-resource-group-map",
+      "description": "Visual map of every Azure resource group and the resources inside it, colour coded by resource family with region, SKU, tag-coverage and governance findings.",
+      "version": "1.0.0"
     },
     {
       "name": "azure-resources-query",

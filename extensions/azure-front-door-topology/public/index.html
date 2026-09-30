@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Azure Front Door Topology</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="toolbar-row">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">Front Door Topology</span>
+        </div>
+        <label class="field">
+          <span class="field-label">Profile</span>
+          <select id="profile-select" aria-label="Front Door profile"></select>
+        </label>
+        <label class="field field-grow">
+          <span class="field-label">Filter</span>
+          <input id="search" type="search" placeholder="Hostname, route, origin…" aria-label="Filter nodes" />
+        </label>
+        <button id="refresh" class="btn btn-primary" type="button">Rescan Azure</button>
+      </div>
+      <div class="toolbar-row toolbar-row-sub">
+        <div class="toggles">
+          <label class="toggle"><input type="checkbox" id="toggle-disabled" checked /> Show disabled</label>
+          <label class="toggle"><input type="checkbox" id="toggle-orphans" checked /> Show unrouted</label>
+        </div>
+        <div class="zoom">
+          <button class="btn btn-ghost" id="zoom-out" type="button" aria-label="Zoom out">&minus;</button>
+          <span id="zoom-label">100%</span>
+          <button class="btn btn-ghost" id="zoom-in" type="button" aria-label="Zoom in">+</button>
+          <button class="btn btn-ghost" id="zoom-fit" type="button">Fit</button>
+        </div>
+        <p class="meta" id="meta"></p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="stage" id="stage" aria-label="Front Door topology graph">
+        <div class="columns" id="columns"></div>
+        <div class="viewport" id="viewport">
+          <div class="canvas" id="canvas">
+            <div class="canvas-inner" id="canvas-inner">
+              <svg class="edges" id="edges" aria-hidden="true"></svg>
+              <div class="nodes" id="nodes"></div>
+            </div>
+          </div>
+        </div>
+        <div class="overlay" id="overlay" hidden>
+          <div class="overlay-card">
+            <h2 id="overlay-title">Scanning Azure…</h2>
+            <p id="overlay-body"></p>
+            <pre id="overlay-detail" hidden></pre>
+            <button class="btn btn-primary" id="overlay-action" type="button" hidden>Retry</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="inspector" id="inspector" aria-label="Selected node details">
+        <div class="inspector-empty" id="inspector-empty">
+          <h2>Nothing selected</h2>
+          <p>Select a domain, endpoint, route, origin group, or origin to trace its path and inspect its configuration.</p>
+        </div>
+        <div class="inspector-body" id="inspector-body" hidden>
+          <span class="chip" id="inspector-layer"></span>
+          <h2 id="inspector-title"></h2>
+          <p class="inspector-sub" id="inspector-sub"></p>
+          <div class="badges" id="inspector-badges"></div>
+          <dl class="details" id="inspector-details"></dl>
+          <div class="path" id="inspector-path"></div>
+          <div class="inspector-actions">
+            <button class="btn btn-primary" id="ask" type="button">Ask Copilot about this</button>
+            <a class="btn btn-ghost" id="portal" target="_blank" rel="noreferrer" hidden>Open in Azure portal</a>
+          </div>
+        </div>
+        <div class="warnings" id="warnings" hidden>
+          <h3>Findings</h3>
+          <ul id="warnings-list"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
